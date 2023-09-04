@@ -9,7 +9,7 @@ function Login() {
       <Link className='login__link' to='/'>
         <img className='login__logo' src={logo} alt='логотип' />
       </Link>
-      <h2 className='login__header'>Рады видеть!</h2>
+      <h1 className='login__header'>Рады видеть!</h1>
       <form className='login__form' noValidate>
         <label className='login__label'>
           <p className='login__info'>E-mail</p>
@@ -34,11 +34,13 @@ function Login() {
             placeholder=''
             required
             autoComplete='off'
+            minLength='8'
+            maxLength='60'
           />
           <span className='login__input-error'></span>
         </label>
+        <button className='login__enter' type='submit'>Войти</button>
       </form>
-      <button className='login__enter' type='submit'>Войти</button>
       <div className='login__register'>
         <p className='login__register-info'>Ещё не зарегистрированы?</p>
         <Link className='login__register-link' to='/signup'>Регистрация</Link>

@@ -1,7 +1,5 @@
 import React from 'react';
 import './Search.css';
-import Checkbox from '../Checkbox/Checkbox';
-// import search from '../../images/find.svg'
 
 function Search() {
   return (
@@ -14,10 +12,19 @@ function Search() {
             placeholder='Фильм'
             required
           />
-          <button className='search__button'>Найти</button>
+          <button className='search__button' type='button'>Найти</button>
           <span className='search__input-error'></span>
         </div>
-        <Checkbox />
+        <div className='checkbox'>
+        <label className='checkbox__checkbox'>
+          <input
+            type='checkbox'
+            className='checkbox__checkbox-click'
+          />
+          <div className='checkbox__checkbox-name'></div>
+        </label>
+      Короткометражки
+    </div>
       </form>
     </section>
   );

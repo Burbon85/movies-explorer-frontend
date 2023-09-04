@@ -23,7 +23,7 @@ function Student() {
             Github
           </a>
         </div>
-        <img className='student__img' src={me} alt='фото' />
+        <img className='student__img' src={me} alt='фото студента, выполневшего дипломный проект' />
       </div>
       <div className='student__portfolio'>
         <h4 className='student__portfolio-title'>Портфолио</h4>
@@ -33,7 +33,7 @@ function Student() {
             href='https://github.com/Burbon85/how-to-learn-2'
             rel='noreferrer'
             target='_blank'>Статичный сайт
-            <p className='student__portfolio-logo'></p>
+            <span className='student__portfolio-logo'></span>
           </a>
         </p>
         <p className='student__portfolio-text'>
@@ -42,7 +42,7 @@ function Student() {
             href='https://burbon85.github.io/Russian-traval/'
             rel='noreferrer'
             target='_blank'>Адаптивный сайт
-            <p className='student__portfolio-logo'></p>
+            <span className='student__portfolio-logo'></span>
           </a>
         </p>
         <p className='student__portfolio-text'>
@@ -51,7 +51,7 @@ function Student() {
             href='https://mesto-practicum.nomoreparties.co'
             rel='noreferrer'
             target='_blank'>Одностраничное приложение
-            <p className='student__portfolio-logo'></p>
+            <span className='student__portfolio-logo'></span>
           </a>
         </p>        
       </div>

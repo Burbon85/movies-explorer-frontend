@@ -10,7 +10,7 @@ function Profile() {
         <HeaderMain />
       </header>
       <main className='profile'>
-        <h2 className='profile__title'>Привет, Виталий!</h2>
+        <h1 className='profile__title'>Привет, Виталий!</h1>
         <div className='profile__block'>
           <label className='profile__label profile__label-name'>
             <p className='profile__subtitle'>Имя</p>

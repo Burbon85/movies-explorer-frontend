@@ -14,7 +14,7 @@ function MoviesCard({ movie }) {
       <div className='card'>
         <img className='card__image' src={image} alt={movie.nameRU} />
         <figcaption className='card__figcaption'>
-          <h3 className='card__title'>{movie.nameRU}</h3>
+          <h2 className='card__title'>{movie.nameRU}</h2>
             {location.pathname === '/movies' && (
             <button
               className='card__button card__button-active'
@@ -41,7 +41,7 @@ function MoviesCard({ movie }) {
               <img
               className='card__icon'
               src={deleteBut}
-              alt='delete'
+              alt='удаление'
               ></img>
             </button>)}
         </figcaption>        

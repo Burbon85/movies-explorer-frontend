@@ -13,7 +13,7 @@ function MoviesList({ movies, isOwner }) {
       </section>
       {!isOwner && (
         <section className='button'>
-          <button className='button__button'>Ещё</button>
+          <button className='button__button' type='button'>Ещё</button>
         </section>
       )}
     </>

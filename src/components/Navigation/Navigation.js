@@ -54,12 +54,12 @@ function Navigation() {
             </Link>
           </div>
           <Link to='/profile' className='navigation__link navigation__link-account'>
-            <button className='navigation__account'>Аккаунт
+            <button className='navigation__account' type='button'>Аккаунт
               <div className='navigation__background-account'>
                 <img
                   className='navigation__img'
                   src={profile}
-                  alt='icon'
+                  alt='иконка'
                 />
               </div>
             </button>

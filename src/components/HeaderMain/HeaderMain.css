@@ -22,3 +22,9 @@
     width: 92.1875%;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .header-main{
+    padding-bottom: 16px;
+  }
+}

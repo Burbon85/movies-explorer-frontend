@@ -8,7 +8,7 @@ import MoviesList from '../MoviesList/MoviesList';
 function Saved({ movies, isOwner }) {
   return (
     <>
-    <header className='main__header'>
+    <header className='main-header'>
       <HeaderMain />
     </header>
     <main className='movies-main'> 

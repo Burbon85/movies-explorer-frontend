@@ -10,7 +10,7 @@ import Footer from '../Footer/Footer';
 function Landing() {
   return (
     <>
-      <header className='landing__header'>
+      <header className='landing-header'>
         <Header />
         <Cover />
       </header>

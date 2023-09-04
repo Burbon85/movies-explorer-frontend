@@ -1,9 +1,3 @@
 .movies-main__block{
-  height: 102px;
-}
-
-@media screen and (max-width: 400px){
-  .movies-main__block{
-    height: 116px;
-  }
+  height: 140px;
 }

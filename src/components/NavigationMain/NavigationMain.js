@@ -57,7 +57,7 @@ function NavigationMain() {
             </Link>
           </div>
           <Link to='/profile' className='navigation-main__link navigation-main__link-account'>
-            <button className='navigation-main__account'>Аккаунт
+            <button className='navigation-main__account' type='button'>Аккаунт
               <div className='navigation-main__background-account'>
                 <img
                   className='navigation-main__img'
