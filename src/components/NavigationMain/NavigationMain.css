@@ -253,13 +253,9 @@
     margin-right: 0
   }
 
-  .navigation-main__menu_active body{
-    overflow: hidden;
-  }
-
     .navigation-main__menu_active {
     right: 0;
-    /* background-attachment: fixed; */
+    body{overflow: hidden;}
   }  
 
   .navigation-main__bacground{

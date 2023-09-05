@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   return (
-    <div className='app'>
+    <div className='app' >
       <Routes>
         <Route path='/signin' element={<Login />}></Route>
         <Route path='/signup' element={<Register />}></Route>

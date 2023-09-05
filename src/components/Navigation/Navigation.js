@@ -9,6 +9,10 @@ function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
+  function handleOpenBurger() {
+    setIsMenuOpen(!isMenuOpen);
+    window.scrollTo(0, 0);
+  }
   return (
     <nav className='navigation'>
 
@@ -66,7 +70,8 @@ function Navigation() {
           </Link>
         </div>
         <div
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={handleOpenBurger}
+          // onClick={() => setIsMenuOpen(!isMenuOpen)}
           className='burger-menu'
         >
           {isMenuOpen ? (
