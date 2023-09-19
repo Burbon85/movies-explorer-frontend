@@ -41,6 +41,7 @@
   line-height: 18px;
   cursor: pointer;
   transition: opacity 1s linear;
+  margin-left: 15px;
 }
 
 .search__button:hover{
@@ -163,7 +164,7 @@
 
 @media screen and (max-width: 400px){
   .checkbox{
-    margin-top: 41px;
+    margin-top: 40px;
     justify-content: center;
     font-size: 11px;
   }

@@ -62,7 +62,7 @@ function NavigationMain() {
                 <img
                   className='navigation-main__img'
                   src={profile}
-                  alt='icon'
+                  alt='иконка'
                 />
               </div>
             </button>

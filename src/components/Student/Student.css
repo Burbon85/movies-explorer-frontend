@@ -1,5 +1,5 @@
 .student{
-  margin: 100px auto 125px;
+  margin: 110px auto 125px;
   width: 100%;
 }
 
@@ -14,6 +14,7 @@
   font-weight: 400;
   line-height: normal;
   padding-bottom: 23px;
+  letter-spacing: -0.88px;
 }
 
 .student__info{
@@ -45,6 +46,7 @@
   line-height: 58px;
   margin-top: 66px;
   margin-bottom: 18px;
+  letter-spacing: -2px;
 }
 
 .student__subtitle{
@@ -111,7 +113,7 @@
   line-height: 50px;
   margin-bottom: 20px;
   margin-top: 0;
-  padding-bottom: 19px;
+  padding-bottom: 9px;
   border-bottom: 1px solid #E8E8E8;
   transition: opacity 1s linear;
 }
@@ -138,6 +140,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 50px;
+  letter-spacing: -1.2px;
 }
 
 .student__portfolio-logo{
@@ -168,6 +171,10 @@
     width: 86.9792%;
   }
 
+  .student__info{
+    width: 86.9792%;
+  }
+
   .student__name{
     margin-bottom: 16px;
     font-size: 40px;
@@ -183,7 +190,7 @@
     margin-top: 20px;
     font-size: 12px;
     line-height: 18px;
-    margin-bottom: 87px;
+    margin-bottom: 70px;
   }
   .student__img{
     width: 255px;
@@ -193,6 +200,10 @@
   .student__portfolio{
     margin-top: 90px;
     width: 86.9792%;
+  }
+
+  .student__portfolio-link{
+    font-size: 28px;
   }
 
   .student__portfolio-text{

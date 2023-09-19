@@ -1,6 +1,8 @@
 .navigation-main{
   /* width: 87.0175%; */
   width: 59.2105%;
+  display: flex;
+  justify-content: center;
 }
 
 .navigation-main__link{
@@ -71,6 +73,11 @@
   align-items: center;
   cursor: pointer;
   transition: opacity 1s linear;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
 }
 
 .navigation-main__account:hover{
@@ -188,6 +195,7 @@
     height: 44px;
     width: 44px;
     transition: opacity 1s linear;
+    margin-right: 15px;
   }
 
   .burger-menu-main__button:hover{
@@ -287,6 +295,7 @@
 @media screen and (max-width: 400px) {
   .navigation-main__links{
     margin-top: 144px;
+    height: 120px;
   }
 
   .navigation-main__link:hover{
@@ -298,8 +307,11 @@
   }
 
   .burger-menu-main__button{
-    width: 40px;
-    height: 43px;
+    margin-right: 0;
+  }
+
+  .navigation-main__link-account{
+    margin-bottom: 85px;
   }
 }
 

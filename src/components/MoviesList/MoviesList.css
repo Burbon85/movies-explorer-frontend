@@ -21,6 +21,11 @@
   margin: 0 auto;
   border: none;
   cursor: pointer;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   transition: opacity 1s linear;
 }
 
