@@ -8,6 +8,7 @@ import close from '../../images/close.svg'
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') ||  false);
 
   function handleOpenBurger() {
     setIsMenuOpen(!isMenuOpen);
@@ -15,20 +16,8 @@ function Navigation() {
   }
   return (
     <nav className='navigation'>
-
-    {/* шапка для неавторизованного пользователя */}
-
-        {/* <div className='navigation__unauthorized'>
-          <Link to='/signup' className='navigation__unauthorized-link'>
-            <button className='navigation__signup'>Регистрация</button>
-          </Link>
-          <Link to='/signin' className='navigation__unauthorized-link'>
-            <button className='navigation__signin'>Войти</button>
-          </Link>
-        </div>  */}
-
         {/* шапка для авторизованного пользователя */}
-        <section className={ isMenuOpen ? 'navigation__bacground' : 'navigation__bacground-none' }>
+        {loggedIn ? ( <section className={ isMenuOpen ? 'navigation__bacground' : 'navigation__bacground-none' }>
         <div
           className={
             isMenuOpen
@@ -71,7 +60,6 @@ function Navigation() {
         </div>
         <div
           onClick={handleOpenBurger}
-          // onClick={() => setIsMenuOpen(!isMenuOpen)}
           className='burger-menu'
         >
           {isMenuOpen ? (
@@ -88,7 +76,17 @@ function Navigation() {
             />
           )}
         </div>
-      </section>
+      </section> ) : (
+         /* шапка для неавторизованного пользователя */
+        <div className='navigation__unauthorized'>
+          <Link to='/signup' className='navigation__unauthorized-link'>
+            <button className='navigation__signup'>Регистрация</button>
+          </Link>
+          <Link to='/signin' className='navigation__unauthorized-link'>
+            <button className='navigation__signin'>Войти</button>
+          </Link>
+        </div> 
+      )}
     </nav>
   );
 }
