@@ -1,15 +1,11 @@
 import React, {useState} from 'react';
 import './MoviesCard.css';
 import { Link, useLocation } from 'react-router-dom';
-import like from '../../images/like.svg';
-import dislike from '../../images/dislike.svg';
-import deleteBut from '../../images/delete.svg';
 import durationMovie from '../../utils/configs/DurationMovie';
 
 function MoviesCard({ isSavedMovie, movie, savedMovies, onSave, onDelete }) {
   const { nameRU, image, duration } = movie;
   const movieDuration = durationMovie(duration);
-  const [isButtonClick, setIsButtonClick] = useState(false);
   const location = useLocation();
 
   let isClick = false;
@@ -25,7 +21,9 @@ function MoviesCard({ isSavedMovie, movie, savedMovies, onSave, onDelete }) {
   );
   return (
       <div className='card'>
-        <img className='card__image' src={image} alt={nameRU} />
+        <a className='card__trailer' href={movie.trailerLink} target='_blank' rel='noreferrer'>
+          <img className='card__image' src={image} alt={nameRU} />
+        </a>
         <figcaption className='card__figcaption'>
           <h2 className='card__title'>{nameRU}</h2>
             {location.pathname === '/movies' && (

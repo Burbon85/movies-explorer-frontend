@@ -17,7 +17,12 @@ function Search({ handleSearch, handleCheckboxClick, onClick, searchRequest, che
     handleSearch(title);
   }
 
-  const handleCheckboxChange = () => {
+  // const handleCheckboxChange = () => {
+  //   const newValue = !isChecked;
+  //   setIsChecked(newValue);
+  //   onClick(newValue);
+  // };
+  function handleCheckboxChange() {
     const newValue = !isChecked;
     setIsChecked(newValue);
     onClick(newValue);
@@ -46,7 +51,8 @@ function Search({ handleSearch, handleCheckboxClick, onClick, searchRequest, che
               className='checkbox__checkbox-click'
               // onChange={(e) => onClick(e.target.checked)}
               // onClick={handleCheckboxClick}
-              onChange={handleCheckboxChange}
+              // onChange={handleCheckboxChange}
+              onChange={() => onClick(handleCheckboxChange)}
               checked={checkbox}
             />
             <div className='checkbox__checkbox-name'></div>
