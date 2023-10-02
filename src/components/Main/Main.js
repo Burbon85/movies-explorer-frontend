@@ -34,18 +34,18 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
   const { width } = useWindowWidth();
   useEffect(() => {
     searchMoviesHandler();
-    filterShotMoviesHandler();
+    filterShotMovies();
   }, [searchRequest, isCheckboxActive]);
 
   useEffect(() => {
-    checkLastRequest();
+    checkFilmsLastRequest();
   }, []);
 
   useEffect(() => {
     resize();
   }, [width]);
 
-  function filterShotMoviesHandler() {
+  function filterShotMovies() {
     setShotMovies(handleFilter(foundMovies));
   }
 
@@ -66,7 +66,7 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
           setInfoTooltipPopupOpen(true);
         } else {
           setRequestToLocalStorage('lastRequest', searchRequest);
-          setRequestToLocalStorage('moviesLastRequest', moviesToRender);
+          setRequestToLocalStorage('filmsLastRequest', moviesToRender);
           setFoundMovies(moviesToRender);
           setRequestToLocalStorage('checkbox', isCheckboxActive);
         }
@@ -93,10 +93,10 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  function checkLastRequest() {
-    const lastMovies = localStorage.getItem('moviesLastRequest');
+  function checkFilmsLastRequest() {
+    const lastMovies = localStorage.getItem('filmsLastRequest');
     if (lastMovies) {
-      setFoundMovies(getLastRequestFromLocalStorage('moviesLastRequest'));
+      setFoundMovies(getLastRequestFromLocalStorage('filmsLastRequest'));
     }
     const lastRequestedKeyword = localStorage.getItem('lastRequest');
     if (lastRequestedKeyword) {
@@ -140,7 +140,7 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
     }
   }
 
-  function handleMoreClick() {
+  function handleMoreButtonClick() {
     setMoviesToInitialRender({
       current: moviesToInitialRender.current + moviesToInitialRender.next,
       next: moviesToInitialRender.next,
@@ -161,7 +161,7 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
         <MoviesList 
           movies={isCheckboxActive ? shotMovies : foundMovies}
           isLoading={isLoading}
-          onClick={handleMoreClick}
+          onClick={handleMoreButtonClick}
           limit={moviesToInitialRender.current}
           isSavedMovie={false}
           onSave={onSave}

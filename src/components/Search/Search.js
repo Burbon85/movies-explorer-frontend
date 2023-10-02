@@ -2,7 +2,7 @@ import React, { useEffect, useState  } from 'react';
 import './Search.css';
 import useValidation from '../../utils/configs/ValidationForm';
 
-function Search({ handleSearch, handleCheckboxClick, onClick, searchRequest, checkbox }) {
+function Search({ handleSearch, handleCheckboxClick, searchRequest, checkbox }) {
   const { errors, values, isValid, handleChange, resetValidation } =
     useValidation();
   const { title } = values;
@@ -16,18 +16,6 @@ function Search({ handleSearch, handleCheckboxClick, onClick, searchRequest, che
     e.preventDefault();
     handleSearch(title);
   }
-
-  // const handleCheckboxChange = () => {
-  //   const newValue = !isChecked;
-  //   setIsChecked(newValue);
-  //   onClick(newValue);
-  // };
-  function handleCheckboxChange() {
-    const newValue = !isChecked;
-    setIsChecked(newValue);
-    onClick(newValue);
-  };
-
   return (
     <section className='search'>
       <form className='search__form' onSubmit={handleSearchFormClick} noValidate>
@@ -49,10 +37,8 @@ function Search({ handleSearch, handleCheckboxClick, onClick, searchRequest, che
             <input
               type='checkbox'
               className='checkbox__checkbox-click'
-              // onChange={(e) => onClick(e.target.checked)}
-              // onClick={handleCheckboxClick}
-              // onChange={handleCheckboxChange}
-              onChange={() => onClick(handleCheckboxChange)}
+              onChange={(e) => handleCheckboxClick(e.target.checked)}
+              onClick={handleCheckboxClick}
               checked={checkbox}
             />
             <div className='checkbox__checkbox-name'></div>

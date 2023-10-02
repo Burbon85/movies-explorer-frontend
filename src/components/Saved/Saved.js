@@ -39,7 +39,7 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
 
   useEffect(() => {
     searchMoviesHandler();
-    filterShotMoviesHandler();
+    filterShotMovies();
   }, [searchRequest, isCheckboxActive]);
 
   useEffect(() => {
@@ -80,7 +80,7 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
     });
   }
 
-  function filterShotMoviesHandler() {
+  function filterShotMovies() {
     setShotMovies(handleFilter(foundMovies));
   }
 
@@ -111,7 +111,7 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
     }
   }
 
-  function handleMoreClick() {
+  function handleMoreButtonClick() {
     setMoviesToInitialRender({
       current: moviesToInitialRender.current + moviesToInitialRender.next,
       next: moviesToInitialRender.next,
@@ -145,7 +145,7 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
             onDelete={onDelete}
             savedMovies={savedMovies}
             isLoading={isLoading}
-            onClick={handleMoreClick}
+            onClick={handleMoreButtonClick}
             limit={moviesToInitialRender.current}
           />
           )}

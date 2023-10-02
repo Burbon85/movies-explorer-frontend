@@ -38,14 +38,6 @@ function App() {
     email: '',
     name: '',
   });
-  const [movies, setMovies] = useState([]);
-
-  // useEffect(() => {
-  //   moviesApi.getAllMovies().then((movies) => {
-  //     setMovies(movies);
-  //     console.log(movies);
-  //   });
-  // }, []);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -93,7 +85,7 @@ function App() {
     useEffect(() => {
       resetErrorMessage();
     }, [resetErrorMessage, navigate]);
-//
+
   function handleRegisterUser({ email, password, name }) {
     setIsLoading(true);
     auth
@@ -111,7 +103,7 @@ function App() {
         setIsLoading(false);
       });
   }
-  //
+
   function handleLoginUser({ email, password }) {
     setIsLoading(true);
     auth
@@ -136,7 +128,7 @@ function App() {
         setIsLoading(false);
       });
   }
-//
+
   function handleUpdateUserInfo({ email, name }) {
     setIsLoading(true);
     mainApi
@@ -164,7 +156,7 @@ function App() {
     localStorage.removeItem('loggedIn');
     localStorage.removeItem('lastRequest');
     localStorage.removeItem('checkbox');
-    localStorage.removeItem('moviesLastRequest');
+    localStorage.removeItem('filmsLastRequest');
     localStorage.removeItem('allMovies');
     setLoggedIn(false);
     setCurrentUser({});
@@ -274,9 +266,6 @@ function App() {
               savedMovies={savedMovies}
             />}
           ></Route>
-          {/* {loggedIn ? ( <Route path='/profile' element={<Profile />}></Route> ) : (
-            <Route path='/profile' element={<Navigate to='/' />} />
-          )} */}
           <Route path='/profile' element={
             <Profile 
               loggedIn={loggedIn}
