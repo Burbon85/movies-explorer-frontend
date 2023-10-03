@@ -1,0 +1,57 @@
+.movies{
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat( auto-fill, 270px);  
+  justify-content: center;
+  gap: 38px 20px;
+}
+
+.button{
+  margin: 60px auto 80px;
+  display: flex;
+  align-items: center;
+}
+
+.button__button{
+  border-radius: 6px;
+  background: #F9F9F9;
+  width: 320px;
+  height: 36px;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  transition: opacity 1s linear;
+}
+
+.button__button:hover{
+  opacity: 0.65;
+}
+
+@media screen and (max-width: 800px) {
+  .movies{
+    /* justify-content: center; */
+    grid-template-columns: repeat( auto-fill, 339px);
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+    .movies{
+      grid-template-columns: repeat( auto-fill, 300px);
+      row-gap: 34px;
+    }
+
+    .button__button{
+      font-size: 12px;
+    }
+
+    .button{
+      margin-top: 71px;
+    }
+}
