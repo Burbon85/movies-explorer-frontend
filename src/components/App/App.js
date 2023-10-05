@@ -95,7 +95,7 @@ function App() {
       })
       .catch((e) => {
         setRegistered(false);
-        setInfoTooltipText('Пользователь с таким e-mail уже существует!');
+        setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз!');
         setInfoTooltipPopupOpen(true);
         setErrorMessage(e.message);
       })
@@ -143,7 +143,7 @@ function App() {
       .catch((error) => {
         setErrorMessage(error.message);
         setRegistered(false);
-        setInfoTooltipText('Пользователь с таким e-mail уже существует!');
+        setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз!');
         setInfoTooltipPopupOpen(true);
       })
       .finally(() => {
@@ -220,6 +220,10 @@ function App() {
     setInfoTooltipPopupOpen(false);
   }
 
+  function handleNavigateBack() {
+    navigate(-1);
+  }
+
   return (
     <div className='app' >
       <CurrentUserContext.Provider value={currentUser}>
@@ -241,8 +245,6 @@ function App() {
           <Route path='/' element={<Landing />}></Route>
           <Route
             path='/movies'
-            // element={<Main />}
-            // element={<Main movies={movies} isOwner={false} />}
             element={
               <ProtectedRoute
                 loggedIn={loggedIn}
@@ -273,7 +275,7 @@ function App() {
               signOut={handleSignOut}
               isLoading={isLoading}
             />}></Route>
-          <Route path='*' element={<NotFound />}></Route>
+          <Route path='*' element={<NotFound navigateBack={handleNavigateBack}/>}></Route>
         </Routes>
         <InfoTooltip
           isOpen={isInfoTooltipPopupOpen}

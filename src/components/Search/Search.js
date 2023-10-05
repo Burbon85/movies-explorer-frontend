@@ -16,6 +16,18 @@ function Search({ handleSearch, handleCheckboxClick, searchRequest, checkbox }) 
     e.preventDefault();
     handleSearch(title);
   }
+
+  // useEffect(() => {
+  //   if ( checkbox !== null) {
+  //     setIsChecked(checkbox);
+  //   }
+  // }, [checkbox]);
+
+  // const handleCheckboxChange = () => {
+  //   const newValue = !isChecked;
+  //   setIsChecked(newValue);
+  // };
+
   return (
     <section className='search'>
       <form className='search__form' onSubmit={handleSearchFormClick} noValidate>
@@ -38,6 +50,7 @@ function Search({ handleSearch, handleCheckboxClick, searchRequest, checkbox }) 
               type='checkbox'
               className='checkbox__checkbox-click'
               onChange={(e) => handleCheckboxClick(e.target.checked)}
+              // onChange={handleCheckboxChange}
               onClick={handleCheckboxClick}
               checked={checkbox}
             />

@@ -8,11 +8,12 @@ import InfoTooltip from '../Infotooltip/InfoTooltip';
 import errorImage from '../../images/err.svg'
 
 import {
-  WINDOW_WIDTH_1020,
+  WINDOW_WIDTH_1140,
   WINDOW_WIDTH_690,
   MOVIES_12_FILMS,
   MOVIES_8_FILMS,
   MOVIES_5_FILMS,
+  MOVIES_4_MORE_FILMS,
   MOVIES_3_MORE_FILMS,
   MOVIES_2_MORE_FILMS,
   SHORT_FILMS,
@@ -122,12 +123,17 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
   }
 
   function resize() {
-    if (width >= WINDOW_WIDTH_1020) {
+    if (width >= WINDOW_WIDTH_1140) {
+      setMoviesToInitialRender({
+        current: MOVIES_12_FILMS,
+        next: MOVIES_4_MORE_FILMS,
+      });
+    } else if ( width > WINDOW_WIDTH_690 && width < WINDOW_WIDTH_1140){
       setMoviesToInitialRender({
         current: MOVIES_12_FILMS,
         next: MOVIES_3_MORE_FILMS,
-      });
-    } else if (width < WINDOW_WIDTH_690) {
+      })
+    }else if (width < WINDOW_WIDTH_690) {
       setMoviesToInitialRender({
         current: MOVIES_5_FILMS,
         next: MOVIES_2_MORE_FILMS,

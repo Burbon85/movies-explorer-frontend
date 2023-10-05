@@ -38,6 +38,11 @@
   text-decoration: none;
   cursor: pointer;
   transition: opacity 1s linear;
+  border: none;
+  background-color: inherit;
+  max-width: 170px;
+  display: flex;
+  align-self: center;
 }
 
 .error__nav:hover{

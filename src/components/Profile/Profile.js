@@ -7,7 +7,7 @@ import useValidation from '../../utils/configs/ValidationForm';
 import InfoTooltip from '../Infotooltip/InfoTooltip';
 import okImage from '../../images/ok.svg';
 
-function Profile({ onUpdateUserInfo, signOut, isLoading, errorMessage }) {
+function Profile({ onUpdateUserInfo, signOut}) {
   const currentUser = useContext(CurrentUserContext);
   const { errors, values, isValid, handleChange, resetValidation } =
   useValidation();
@@ -21,7 +21,7 @@ function Profile({ onUpdateUserInfo, signOut, isLoading, errorMessage }) {
   }, [currentUser]);
 
   useEffect(() => {
-    let isActiveButton = (currentUser.name !== values.name) || (currentUser.email !== values.email);
+    let isActiveButton = (values.name !== currentUser.name) || (values.email !== currentUser.email);
     setIsDisabled(isActiveButton);
   }, [values, currentUser, isValid])
 
@@ -64,11 +64,12 @@ function Profile({ onUpdateUserInfo, signOut, isLoading, errorMessage }) {
               required
               onChange={handleChange}
               value={values.email || ''}
+              pattern="^[A-Za-z0-9_.+\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-.]+$"
             />
           </label>
         </div>
         <div className='profile__links'>
-          <button className={`profile__link profile__link-redact ${!isValid && errors ? 'profile__link-redact_disabled' : ''}`}
+          <button className={`profile__link profile__link-redact ${(!isValid || !isDisabled) && errors ? 'profile__link-redact_disabled' : ''}`}
           disabled={!isValid || !isDisabled} type='submit'> 
             Редактировать
           </button>

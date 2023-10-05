@@ -65,6 +65,7 @@ function Register({ ...props }) {
           autoComplete='off'
           value={values.email || ''}
           onChange={handleChange}
+          pattern="^[A-Za-z0-9_.+\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-.]+$"
         />
         <span className={`signup__input-error ${
             !isValid && errors.email ? 'signup__input-error_active' : ''}`}>{errors.email || ''}</span>

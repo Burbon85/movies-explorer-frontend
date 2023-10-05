@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './NotFound.css';
 
-function NotFound() {
+function NotFound({ navigateBack }) {
   return (
     <main className='error'>
       <h1 className='error__title'>404</h1>
       <p className='error__subtitle'>Страница не найдена</p>
-      <Link className='error__nav' to='/'>
+      <button className='error__nav' onClick={navigateBack}>
         Назад
-      </Link>
+      </button>
     </main>
   );
 }
