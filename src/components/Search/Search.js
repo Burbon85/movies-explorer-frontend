@@ -44,6 +44,7 @@ function Search({ handleSearch, handleCheckboxClick, searchRequest, checkbox }) 
           <button className='search__button' type='submit'>Найти</button>
           <span className='search__input-error'></span>
         </div>
+
         <div className='checkbox'>
           <label className='checkbox__checkbox'>
             <input

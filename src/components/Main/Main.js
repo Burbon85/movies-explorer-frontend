@@ -35,8 +35,11 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
   const { width } = useWindowWidth();
   useEffect(() => {
     searchMoviesHandler();
-    filterShotMovies();
   }, [searchRequest, isCheckboxActive]);
+
+  useEffect(() => {
+    filterShotMovies();
+  }, [foundMovies]);
 
   useEffect(() => {
     checkFilmsLastRequest();
@@ -45,16 +48,6 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
   useEffect(() => {
     resize();
   }, [width]);
-
-  function filterShotMovies() {
-    setShotMovies(handleFilter(foundMovies));
-  }
-
-  function handleFilter(movies) {
-    return movies.filter((movie) => {
-      return movie.duration <= SHORT_FILMS;
-    });
-  }
 
   async function searchMoviesHandler() {
     setIsLoading(true);
@@ -78,6 +71,16 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  function filterShotMovies() {
+    setShotMovies(handleFilter(foundMovies));
+  }
+
+  function handleFilter(movies) {
+    return movies.filter((movie) => {
+      return movie.duration <= SHORT_FILMS;
+    });
   }
 
   function handleSearch(movies, keyword) {
@@ -114,7 +117,7 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
     return JSON.parse(localStorage.getItem(key));
   }
 
-  function handleCheckboxClick(value) {
+  function handleCheckboxClickActive(value) {
     setIsCheckboxActive(value);
   }
 
@@ -158,9 +161,9 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
         <HeaderMain />
       </header>
       <main className='movies-main'> 
-        <Search 
+        <Search
           handleSearch={setSearchRequest}
-          handleCheckboxClick={handleCheckboxClick}
+          handleCheckboxClick={handleCheckboxClickActive}
           searchRequest={searchRequest}
           checkbox={isCheckboxActive}
         />
