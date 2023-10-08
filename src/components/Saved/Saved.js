@@ -40,8 +40,11 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
 
   useEffect(() => {
     searchMoviesHandler();
-    filterShotMovies();
   }, [searchRequest, isCheckboxActive]);
+
+  useEffect(() => {
+    filterShotMovies();
+  }, [foundMovies]);
 
   useEffect(() => {
     resize()
