@@ -24,6 +24,9 @@ function MoviesList({ movies, isSavedMovie, onSave, onDelete, savedMovies, isLoa
           })
         )}
       </section>
+      {(movies.length === 0) && (
+        <h3 className='movies__error'>Ничего не найдено</h3>
+      )}
        {(movies.length > limit) && (
         <section className='button'>
           <button className='button__button' type='button' onClick={onClick}>Ещё</button> 

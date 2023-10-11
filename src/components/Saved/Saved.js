@@ -57,7 +57,7 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
         const moviesToRender = await handleSearch(initialMovies, searchRequest);
         if(moviesToRender.length === 0) {
           setInfoTooltipText('Не найдено');
-          setInfoTooltipPopupOpen(true);
+          // setInfoTooltipPopupOpen(true);
         } else {
           setFoundMovies(moviesToRender);
         }

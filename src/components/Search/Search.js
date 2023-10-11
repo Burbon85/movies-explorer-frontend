@@ -1,4 +1,4 @@
-import React, { useEffect, useState  } from 'react';
+import React, { useEffect  } from 'react';
 import './Search.css';
 import useValidation from '../../utils/configs/ValidationForm';
 
@@ -6,7 +6,6 @@ function Search({ handleSearch, handleCheckboxClick, searchRequest, checkbox }) 
   const { errors, values, isValid, handleChange, resetValidation } =
     useValidation();
   const { title } = values;
-  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     resetValidation({ title: searchRequest });
@@ -16,17 +15,6 @@ function Search({ handleSearch, handleCheckboxClick, searchRequest, checkbox }) 
     e.preventDefault();
     handleSearch(title);
   }
-
-  // useEffect(() => {
-  //   if ( checkbox !== null) {
-  //     setIsChecked(checkbox);
-  //   }
-  // }, [checkbox]);
-
-  // const handleCheckboxChange = () => {
-  //   const newValue = !isChecked;
-  //   setIsChecked(newValue);
-  // };
 
   return (
     <section className='search'>

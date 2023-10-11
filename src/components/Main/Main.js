@@ -57,14 +57,14 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
         const moviesToRender = await handleSearch(initialMovies, searchRequest);
         if (moviesToRender.length === 0) {
           setInfoTooltipText('Не найдено');
-          setInfoTooltipPopupOpen(true);
+          // setInfoTooltipPopupOpen(true);
         } else {
           setRequestToLocalStorage('lastRequest', searchRequest);
           setRequestToLocalStorage('filmsLastRequest', moviesToRender);
           setFoundMovies(moviesToRender);
           setRequestToLocalStorage('checkbox', isCheckboxActive);
         }
-      }
+      } 
       return;
     } catch (err) {
       console.log(err);
@@ -77,7 +77,11 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
     setShotMovies(handleFilter(foundMovies));
   }
 
-  function handleFilter(movies) {
+  function handleFilter(movies) {        
+    if (movies.filter.length === 0) {
+      setInfoTooltipText('Не найдено');
+      setInfoTooltipPopupOpen(true);
+    }
     return movies.filter((movie) => {
       return movie.duration <= SHORT_FILMS;
     });
