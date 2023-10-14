@@ -100,7 +100,9 @@ function App() {
         setErrorMessage(e.message);
       })
       .finally(() => {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1500);
       });
   }
 
@@ -125,7 +127,9 @@ function App() {
         setErrorMessage(e.message);
       })
       .finally(() => {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1500);
       });
   }
 
@@ -147,7 +151,9 @@ function App() {
         setInfoTooltipPopupOpen(true);
       })
       .finally(() => {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1500);
       });
   }
 

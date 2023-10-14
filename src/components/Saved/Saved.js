@@ -71,7 +71,10 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
     } catch(err) {
       console.log(err);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+
     }
   }
 
@@ -92,6 +95,18 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
   function filterShotMovies(foundMovies) {
     setShotMovies(handleFilter(foundMovies));
   }
+
+  // function handleFilter(movies) {
+  //   return movies.filter((movie) => {
+  //     return movie.duration <= SHORT_FILMS;
+  //   });
+  // }
+
+  // function filterShotMovies(foundMovies) {
+  //   setShotMovies((movie)  => {
+  //     return movie.duration <= SHORT_FILMS;
+  //   });
+  // }
 
   function handleCheckboxClick(value) {
     setIsCheckboxActive(value);

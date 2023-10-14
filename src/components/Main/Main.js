@@ -69,7 +69,9 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
     } catch (err) {
       console.log(err);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500);
     }
   }
 
