@@ -47,7 +47,7 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
   }, [searchRequest, isCheckboxActive]);
 
   useEffect(() => {
-    filterShotMovies(foundMovies);
+    filterShotMovies(initialMovies);
   }, [foundMovies, searchRequest]);
 
   useEffect(() => {
