@@ -38,13 +38,17 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
     setFoundMovies(initialMovies);
   }, [])
 
+  // useEffect(() => {
+  //   setSearchRequest();
+  // }, [])
+
   useEffect(() => {
     searchMoviesHandler();
   }, [searchRequest, isCheckboxActive]);
 
   useEffect(() => {
-    filterShotMovies();
-  }, [foundMovies]);
+    filterShotMovies(foundMovies);
+  }, [foundMovies, searchRequest]);
 
   useEffect(() => {
     resize()
@@ -52,6 +56,7 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
 
   async function searchMoviesHandler() {
     setIsLoading(true);
+    setFoundMovies([]);
     try {
       if(searchRequest.length > 0) {
         const moviesToRender = await handleSearch(initialMovies, searchRequest);
@@ -70,21 +75,21 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
     }
   }
 
-  function handleSearch(moviesArray, keyword) {
-    return moviesArray.filter((movie) => {
+  function handleSearch(movies, keyword) {
+    return movies.filter((movie) => {
       const a = keyword.toLowerCase().trim();
       return movie.nameRU.toLowerCase().indexOf(a) !== -1 ||
       movie.nameEN.toLowerCase().indexOf(a) !== -1
     })
   }
 
-  function handleFilter(moviesArray) {
-    return moviesArray.filter((movie) => {
+  function handleFilter(movies) {
+    return movies.filter((movie) => {
       return movie.duration <= SHORT_FILMS;
     });
   }
 
-  function filterShotMovies() {
+  function filterShotMovies(foundMovies) {
     setShotMovies(handleFilter(foundMovies));
   }
 
