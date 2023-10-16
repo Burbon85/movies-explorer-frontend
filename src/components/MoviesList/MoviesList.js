@@ -1,19 +1,35 @@
 import React from 'react';
 import './MoviesList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import Preloader from '../../utils/Preloader/Preloader';
 
-function MoviesList({ movies, isOwner }) {
-  const arrayCards = movies.slice(0, 12); 
+function MoviesList({ movies, isSavedMovie, onSave, onDelete, savedMovies, isLoading, onClick, limit
+}) {
   return (    
     <>
       <section className='movies'>
-        {arrayCards.map((cardMovie) => (
-          <MoviesCard movie={cardMovie} key={cardMovie.id} />
-        ))}
+        {isLoading ? (
+          <Preloader />) : (
+          movies.map((movie, movieIndex) => {
+            return (
+              movieIndex < limit &&
+              <MoviesCard
+                isSavedMovie={isSavedMovie}
+                movie={movie}                
+                savedMovies={savedMovies}
+                onSave={onSave}
+                onDelete={onDelete}
+                key={movie.movieId}
+              />);
+          })
+        )}
       </section>
-      {!isOwner && (
+      {(movies.length === 0) && (
+        <h3 className='movies__error'>Ничего не найдено</h3>
+      )}
+       {(movies.length > limit) && (
         <section className='button'>
-          <button className='button__button' type='button'>Ещё</button>
+          <button className='button__button' type='button' onClick={onClick}>Ещё</button> 
         </section>
       )}
     </>

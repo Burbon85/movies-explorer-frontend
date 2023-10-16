@@ -1,5 +1,5 @@
 .movies{
-  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat( auto-fill, 270px);  
@@ -33,6 +33,22 @@
   opacity: 0.65;
 }
 
+.movies__error{
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 90px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 100px;
+}
+
+@media screen and (max-width: 1280px){
+  .movies{
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .movies{
     /* justify-content: center; */
@@ -45,6 +61,10 @@
     .movies{
       grid-template-columns: repeat( auto-fill, 300px);
       row-gap: 34px;
+    }
+
+    .movies__error{
+      font-size: 80px;
     }
 
     .button__button{

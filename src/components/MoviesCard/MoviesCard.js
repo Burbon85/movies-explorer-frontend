@@ -1,51 +1,54 @@
 import React, {useState} from 'react';
 import './MoviesCard.css';
 import { Link, useLocation } from 'react-router-dom';
-import like from '../../images/like.svg';
-import dislike from '../../images/dislike.svg';
-import deleteBut from '../../images/delete.svg';
+import durationMovie from '../../utils/configs/DurationMovie';
 
-function MoviesCard({ movie }) {
-  // const { image, nameRU, duration } = movie;
-  const image = `https://api.nomoreparties.co/${movie.image.url}`;
-  const [isButtonClick, setIsButtonClick] = useState(false);
+function MoviesCard({ isSavedMovie, movie, savedMovies, onSave, onDelete }) {
+  const { nameRU, image, duration } = movie;
+  const movieDuration = durationMovie(duration);
   const location = useLocation();
+
+  let isClick = false;
+  let clickId;
+  isClick = savedMovies.some((savedMovie) => {
+    if (savedMovie.movieId === movie.movieId) {
+      clickId = savedMovie._id;
+      return true;
+    }
+  })
+  const cardButtonClickClassName = ( 
+    `card__button ${isClick && 'card__button_active'}`
+  );
   return (
       <div className='card'>
-        <img className='card__image' src={image} alt={movie.nameRU} />
+        <a className='card__trailer' href={movie.trailerLink} target='_blank' rel='noreferrer'>
+          <img className='card__image' src={image} alt={nameRU} />
+        </a>
         <figcaption className='card__figcaption'>
-          <h2 className='card__title'>{movie.nameRU}</h2>
+          <h2 className='card__title'>{nameRU}</h2>
             {location.pathname === '/movies' && (
             <button
-              className='card__button card__button-active'
+              className={cardButtonClickClassName}
               name='card__button'
-              type='button'
-              onClick={() => setIsButtonClick(!isButtonClick)}
-              > {isButtonClick ? (<img
-              className='card__icon'
-              src={like}
-              alt='лайк'
-              ></img>) : (<img
-              className='card__icon'
-              src={dislike}
-              alt='лайк'
-              ></img>) }
-            </button>)}
+              type='button'            
+              onClick={() => {
+                isClick || isSavedMovie ? onDelete(movie._id ? movie._id : clickId) : onSave(movie);
+              }}
+            ></button>)}
 
           {location.pathname === '/saved-movies' && (
-            <button
-              className='card__button card__button-active'
-              name='card__delete'
-              type='button'
-            >
-              <img
-              className='card__icon'
-              src={deleteBut}
-              alt='удаление'
-              ></img>
-            </button>)}
+              <button
+                className='card__button card__button-delete'
+                name='card__delete'
+                type='button'
+                onClick={() => {
+                  isSavedMovie = onDelete(movie._id);
+                }}
+              >
+              </button>
+            )}
         </figcaption>        
-        <p className='card__duration'>{movie.duration}</p>
+        <p className='card__duration'>{movieDuration}</p>
       </div>
   );
 }

@@ -1,5 +1,5 @@
 .search{
-  width: 100%;
+  width: 89.0625%;
   margin: 70px auto 118px;
 }
 
@@ -52,6 +52,7 @@
   .search{
     margin-top: 80px;
     margin-bottom: 131px;
+    width: 92.1875%;
   }
 }
 

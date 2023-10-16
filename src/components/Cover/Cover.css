@@ -46,6 +46,17 @@
   width: 129px;
   height: 36px;
   opacity: 0.6;
+  margin: 0;
+  text-decoration: none;
+  color: #FFF;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cover__button:hover{
@@ -58,17 +69,6 @@
   align-items: flex-start;
   width: 310px;
   height: 304px;
-}
-
-.cover__button-more{
-  margin: 0;
-  text-decoration: none;
-  color: #FFF;
-  font-family: 'Inter', 'Arial', sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
 }
 
 @media screen and (max-width: 800px) {

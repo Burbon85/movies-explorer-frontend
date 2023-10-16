@@ -10,23 +10,6 @@ function NavigationMain() {
 
   return (
     <nav className='navigation-main'>
-        {/* <div className='navigation-main__authorized'>
-          <div className='navigation-main__links'>
-            <Link className='navigation-main__link navigation-main__link-film' to='/movies'>Фильмы</Link>
-            <Link className='navigation-main__link' to='/saved-movies'>Сохранённые фильмы</Link>
-          </div>
-          <Link to='/profile' className='navigation-main__link navigation__link-account'>
-            <button className='navigation-main__account'>Аккаунт
-              <div className='navigation-main__background'>
-                <img
-                  className='navigation-main__img'
-                  src={profile}
-                  alt='icon'
-                />
-              </div>
-            </button>
-            </Link>
-        </div> */}
         <section className={ isMenuOpen ? 'navigation-main__bacground' : 'navigation-main__bacground-none' }>
         <div
           className={

@@ -75,6 +75,13 @@
 .profile__link-redact{
   color: #000;
   margin-bottom: 16px;
+  background-color: inherit;
+  border: none;
+}
+
+.profile__link-redact_disabled{
+  opacity: 0.5;
+  cursor: auto;
 }
 
 @media screen and (max-width: 800px){

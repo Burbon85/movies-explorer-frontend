@@ -1,9 +1,9 @@
 .movies-main{
-  width: 89.0625%;
+  width: 100%;
   margin: 0 auto;
 }
 
-@media screen and (max-width: 800px){
+/* @media screen and (max-width: 800px){
   .movies-main{
     width: 92.1875%;
   }
@@ -13,4 +13,4 @@
   .movies-main{
     width: 91.25%;
   }
-}
+} */

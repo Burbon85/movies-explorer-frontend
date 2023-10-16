@@ -9,7 +9,7 @@ function Cover() {
       <div className='cover__info'>
         <h1 className='cover__title'>Учебный проект студента факультета Веб-разработки.</h1>
         <p className='cover__subtitle'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
-        <button className='cover__button' type='button'><a href='#project' className='cover__button-more'>Узнать больше</a></button>
+        <a href='#project' className='cover__button'>Узнать больше</a>
       </div>
       <img
           className='cover__image'

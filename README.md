@@ -1,7 +1,9 @@
 # movies-explorer-frontend
 ## макет light-1
 
-### Шапка для не авторизованных ползователей закомментирована в файле Navigation.js.
-### Поскольку прописал 2 меню, то на странице http://localhost:3000/ решил оставить кнопку "аккаунт" зелёного цвета, а на других страницах белого ( не совсем) цвета
-### В бургерном меню сделал подчёркивание при наведении на какую-либо из ссылок
-### Сделал крутящуюся картинку как во вторй практической работе.
+### ссылка на фронт https://movies-artur.nomoreparties.co
+### ссылка на бэк https://api.movies-artur.nomoreparties.co
+### ссылка на фронт(git) https://github.com/Burbon85/movies-explorer-frontend ветка level-3
+### ссылка на бэк(git) https://github.com/Burbon85/movies-explorer-api/tree/level-1
+
+#### Ссылка на пулреквест https://github.com/Burbon85/movies-explorer-frontend/pull/5

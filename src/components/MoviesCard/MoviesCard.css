@@ -48,13 +48,25 @@
   border-radius: 10px;
   cursor: pointer;
   transition: opacity 1s linear;
+  background-image: url(../../images/dislike.svg);
+  background-size: cover;
 }
 .card__button:hover{
   opacity: 0.65;
 }
 
-.card__button-active{
+.card__button_active{
+  background-image: url(../../images/like.svg);
+}
 
+.card__button-delete:hover{
+  background-image: url(../../images/delete.svg);
+  width: 24px;
+  height: 24px;
+}
+
+.card__trailer{
+  cursor: pointer;
 }
 
 @media screen and (max-width: 800px){
