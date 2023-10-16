@@ -5,7 +5,8 @@ import Search from '../Search/Search';
 import Footer from '../Footer/Footer';
 import MoviesList from '../MoviesList/MoviesList';
 import InfoTooltip from '../Infotooltip/InfoTooltip';
-import errorImage from '../../images/err.svg'
+import errorImage from '../../images/err.svg';
+import Preloader from '../../utils/Preloader/Preloader';
 
 import {
   WINDOW_WIDTH_1140,
@@ -173,7 +174,9 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
           searchRequest={searchRequest}
           checkbox={isCheckboxActive}
         />
-        <MoviesList 
+        {isLoading ? (
+        <Preloader />
+          ) : ( <MoviesList 
           movies={isCheckboxActive ? shotMovies : foundMovies}
           isLoading={isLoading}
           onClick={handleMoreButtonClick}
@@ -183,6 +186,7 @@ function Main({ initialMovies, onSave, onDelete, savedMovies }) {
           onDelete={onDelete}
           savedMovies={savedMovies}
         />
+        )}
       </main>
       <InfoTooltip
         isOpen={isInfoTooltipPopupOpen}

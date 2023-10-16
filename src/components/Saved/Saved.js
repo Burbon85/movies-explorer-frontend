@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Saved.css';
 import HeaderMain from '../HeaderMain/HeaderMain';
 import Search from '../Search/Search';
@@ -25,7 +25,7 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
   const [foundMovies, setFoundMovies] = useState([]);
   const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(false);
   const [infoTooltipText, setInfoTooltipText] = useState('');
-  const [shotMovies, setShotMovies] = useState([]);
+  const [shotMovies, setShortMovies] = useState([]);
   const [searchRequest, setSearchRequest] = useState('');
   const [isCheckboxActive, setIsCheckboxActive] = useState(false);
   const [moviesToInitialRender, setMoviesToInitialRender] = useState({
@@ -33,81 +33,47 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
     next: 0,
   });
   const { width } = useWindowWidth();
-  
+
   useEffect(() => {
     setFoundMovies(initialMovies);
   }, [])
-
-  // useEffect(() => {
-  //   setSearchRequest();
-  // }, [])
 
   useEffect(() => {
     searchMoviesHandler();
   }, [searchRequest, isCheckboxActive]);
 
   useEffect(() => {
-    filterShotMovies(initialMovies);
+    filterShortMovies(initialMovies);
   }, [foundMovies, searchRequest]);
+
+  useEffect(searchMoviesHandler, [initialMovies])
 
   useEffect(() => {
     resize()
   }, [width]);
 
-  async function searchMoviesHandler() {
-    setIsLoading(true);
-    setFoundMovies([]);
-    try {
-      if(searchRequest.length > 0) {
-        const moviesToRender = await handleSearch(initialMovies, searchRequest);
-        if(moviesToRender.length === 0) {
-          setInfoTooltipText('Не найдено');
-          // setInfoTooltipPopupOpen(true);
-        } else {
-          setFoundMovies(moviesToRender);
-        }
-      }
-      return
-    } catch(err) {
-      console.log(err);
-    } finally {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-
-    }
+  function searchMoviesHandler() {
+    handleSearch(initialMovies, searchRequest);
   }
 
   function handleSearch(movies, keyword) {
-    return movies.filter((movie) => {
-      const a = keyword.toLowerCase().trim();
-      return movie.nameRU.toLowerCase().indexOf(a) !== -1 ||
-      movie.nameEN.toLowerCase().indexOf(a) !== -1
-    })
+    const filteredMovies = handleFilter(movies, keyword);
+    const filteredShortMovies = filterShortMovies(filteredMovies);
+    setFoundMovies(filteredMovies)
+    setShortMovies(filteredShortMovies)
   }
 
-  function handleFilter(movies) {
+  function handleFilter(movies, keyword) {
+    const loweredKeyword = keyword.toLowerCase().trim();
     return movies.filter((movie) => {
-      return movie.duration <= SHORT_FILMS;
+      return movie.nameRU.toLowerCase().indexOf(loweredKeyword) !== -1 ||
+        movie.nameEN.toLowerCase().indexOf(loweredKeyword) !== -1
     });
   }
 
-  function filterShotMovies(foundMovies) {
-    setShotMovies(handleFilter(foundMovies));
+  function filterShortMovies(foundedMovies) {
+    return foundedMovies.filter((movie) => movie.duration <= SHORT_FILMS)
   }
-
-  // function handleFilter(movies) {
-  //   return movies.filter((movie) => {
-  //     return movie.duration <= SHORT_FILMS;
-  //   });
-  // }
-
-  // function filterShotMovies(foundMovies) {
-  //   setShotMovies((movie)  => {
-  //     return movie.duration <= SHORT_FILMS;
-  //   });
-  // }
-
   function handleCheckboxClick(value) {
     setIsCheckboxActive(value);
   }
@@ -122,12 +88,12 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
         current: MOVIES_12_FILMS,
         next: MOVIES_4_MORE_FILMS,
       });
-    } else if ( width > WINDOW_WIDTH_690 && width < WINDOW_WIDTH_1140){
+    } else if (width > WINDOW_WIDTH_690 && width < WINDOW_WIDTH_1140) {
       setMoviesToInitialRender({
         current: MOVIES_12_FILMS,
         next: MOVIES_3_MORE_FILMS,
       })
-    }else if (width < WINDOW_WIDTH_690) {
+    } else if (width < WINDOW_WIDTH_690) {
       setMoviesToInitialRender({
         current: MOVIES_5_FILMS,
         next: MOVIES_2_MORE_FILMS,
@@ -153,44 +119,45 @@ function Saved({ initialMovies, onSave, onDelete, savedMovies }) {
     }
     return isCheckboxActive ? shotMovies : foundMovies;
   };
+
   return (
     <>
-    <header className='main-header'>
-      <HeaderMain />
-    </header>
-    <main className='movies-main'> 
-      <Search 
-        handleSearch={setSearchRequest}
-        handleCheckboxClick={handleCheckboxClick}
-        searchRequest={searchRequest}
-        checkbox={isCheckboxActive}
-      />
-      {isLoading ? (
-        <Preloader />
-          ) : ( <MoviesList 
-            movies={getMoviesList()} 
-            isSavedMovie={true}
-            onSave={onSave}
-            onDelete={onDelete}
-            savedMovies={savedMovies}
-            isLoading={isLoading}
-            onClick={handleMoreButtonClick}
-            limit={moviesToInitialRender.current}
-          />
-          )}
-      <div className='movies-main__block'></div>    
-    </main>
-    <footer>
-      <Footer />
-    </footer>
+      <header className='main-header'>
+        <HeaderMain />
+      </header>
+      <main className='movies-main'>
+        <Search
+          handleSearch={setSearchRequest}
+          handleCheckboxClick={handleCheckboxClick}
+          searchRequest={searchRequest}
+          checkbox={isCheckboxActive}
+        />
+        {isLoading ? (
+          <Preloader />
+        ) : (<MoviesList
+          movies={getMoviesList()}
+          isSavedMovie={true}
+          onSave={onSave}
+          onDelete={onDelete}
+          savedMovies={savedMovies}
+          isLoading={isLoading}
+          onClick={handleMoreButtonClick}
+          limit={moviesToInitialRender.current}
+        />
+        )}
+        <div className='movies-main__block'></div>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
 
-    <InfoTooltip
-      isOpen={isInfoTooltipPopupOpen}
-      title={infoTooltipText}
-      onClose={closePopup}
-      image={errorImage}
-    />
-  </>
+      <InfoTooltip
+        isOpen={isInfoTooltipPopupOpen}
+        title={infoTooltipText}
+        onClose={closePopup}
+        image={errorImage}
+      />
+    </>
   )
 }
 
